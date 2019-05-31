@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+	<style>
+		.list {
+			padding:20px;
+			border:1px solid #00a0e9;
+			margin:20px;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<button class="btn1">新建列表</button>
+	<div class="list">
+		<button class="btn2">新增li</button>
+		<div class="li">a-1<button class="btn3">删除</button>
+		</div>
+		<div class="li">a-2<button class="btn3">删除</button>
+		</div>
+		<div class="li">a-3<button class="btn3">删除</button></div>
+		
+	</div>
+	<div class="list">
+		<button class="btn2">新增li</button>
+		<div class="li">b-1<button class="btn3">删除</button></div>
+		<div class="li">b-2<button class="btn3">删除</button></div>
+		<div class="li">b-3<button class="btn3">删除</button></div>
+		
+	</div>
+	<div class="list">
+		<button class="btn2">新增li</button>
+		<div class="li">c-1<button class="btn3">删除</button></div>
+		<div class="li">c-2<button class="btn3">删除</button></div>
+		<div class="li">c-3<button class="btn3">删除</button></div>
+		
+	</div>
+	<div id="content">
+		1234556666
+	</div>
+	<button class="copy">复制1</button>
+	
+ 
+	<a href="clean-zs.png" download="img">下载图片1</a>
+</div>
+<script src="clipboard.min.js"></script>
+<script type="text/javascript">
+	
+    var c = document.getElementById("content");
+    var s=c.innerHTML;
+    var clipboard = new Clipboard('.copy', {
+        text: function() {
+            return s;
+        }
+    });
+    console.log(clipboard);
+    clipboard.on('success', function(e) {
+        alert("复制成功");
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    
+	var a = '96.99%';
+    console.log(parseInt(a));
+    
+</script>
+<script>
+
+    
+    //点击最外层列表新增按钮'
+	$(".btn1").click(function(){
+	    var listHtml = '<div class="list">\n' +
+            '\t\t<button class="btn2">新增li</button>\n' +
+            '\t\t<div class="li">li<button class="btn3">删除</button></div>\n' +
+            '\t\t<div class="li">li<button class="btn3">删除</button></div>\n' +
+            '\t\t<div class="li">li<button class="btn3">删除</button></div>\n' +
+            
+            '\t</div>';
+	    $(this).parent(".box").append(listHtml);
+	});
+	//点击每个list内的新增li按钮
+	$(document).on("click",".btn2",function(){
+	    var isLiLen = $(this).parent(".list").children(".isLi").length;
+		if(isLiLen < 5){
+            var liHtml = '<div class="li isLi">li<button class="btn3">删除</button></div>';
+            $(this).parents(".list").append(liHtml);
+		}else{
+		    alert('已不可在添加元素！')
+		}
+	 
+	 
+	});
+	
+	//点击每个li后的删除按钮
+    $(document).on("click",".btn3",function(){
+        $(this).parents(".li").remove();
+    });
+	
+	//每个list中的li个数不能超过5个，，
+
+var arr = [{id:'1',name:'www'}];
+console.log(arr['id']);//undefined
+console.log(arr.id);//undefined
+console.log(arr[0]['id']);//1
+console.log(arr[0].id);//1
+console.log(arr[0]['name']);//www
+	console.log(Math.abs(-3));
+	var aaa = -3;
+	var bbb = Math.abs(aaa);
+	console.log(bbb)
+
+  
+
+</script>
+</body>
+</html>
